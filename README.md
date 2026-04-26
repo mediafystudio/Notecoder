@@ -12,7 +12,7 @@ Editor de código e markdown com preview em tempo real. Roda como aplicativo des
 | Diagramas Mermaid (com zoom e export PNG/SVG) | ✅ | ✅ |
 | Múltiplas abas | ✅ | ✅ |
 | Temas claro e escuro | ✅ | ✅ |
-| Importar arquivo do GitHub | ✅ | ✅ |
+| Importar repositório do GitHub | ✅ | ✅ |
 | Importar arquivo do computador | ✅ | ✅ |
 | Importar pasta inteira | ✅ | ✅ |
 | Exportar arquivo (download) | ✅ | ✅ |
@@ -58,7 +58,7 @@ notecoder/
 └── tailwind.config.ts    ← Configuração do Tailwind CSS
 ```
 
-> Os dois lados **não podem ser separados em pastas diferentes** — o Tauri compila o lado web primeiro e o embute no executável. A estrutura `src/` + `src-tauri/` é o padrão oficial do Tauri.
+> O Tauri compila o lado web primeiro e o embute no executável. A estrutura `src/` + `src-tauri/` é o padrão oficial do Tauri.
 
 ---
 
