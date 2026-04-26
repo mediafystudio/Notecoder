@@ -4,7 +4,20 @@ Editor de código e markdown com preview em tempo real. Roda como aplicativo des
 
 **Demo ao vivo:** https://notecoder.vercel.app
 
-> A demo mostra a interface completa. Funções que dependem do sistema operacional (salvar arquivos, pasta de backup) só funcionam na versão desktop instalada.
+| Funcionalidade | Web | Desktop |
+|---|:---:|:---:|
+| Editor de código com syntax highlighting | ✅ | ✅ |
+| Preview de Markdown em tempo real | ✅ | ✅ |
+| Suporte a fórmulas matemáticas (KaTeX) | ✅ | ✅ |
+| Diagramas Mermaid | ✅ | ✅ |
+| Múltiplas abas | ✅ | ✅ |
+| Temas claro e escuro | ✅ | ✅ |
+| Importar arquivo do GitHub | ✅ | ✅ |
+| Salvar arquivos no disco | ❌ | ✅ |
+| Carregar arquivos do disco | ❌ | ✅ |
+| Pasta de backup automático | ❌ | ✅ |
+| Monitorar mudanças na pasta | ❌ | ✅ |
+| Ícone na bandeja do sistema | ❌ | ✅ |
 
 ---
 
