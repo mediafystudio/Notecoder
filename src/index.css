@@ -1,0 +1,582 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tokyo Night — matches the JS defaultTheme in useTheme.ts */
+@layer base {
+  :root {
+    /* Base */
+    --background: 234 19% 13%;
+    --foreground: 229 35% 75%;
+
+    --card: 240 16% 10%;
+    --card-foreground: 229 35% 75%;
+
+    --popover: 240 16% 10%;
+    --popover-foreground: 229 35% 75%;
+
+    /* Primary */
+    --primary: 220 89% 72%;
+    --primary-foreground: 234 19% 13%;
+
+    --secondary: 234 17% 15%;
+    --secondary-foreground: 229 35% 75%;
+
+    --muted: 234 16% 17%;
+    --muted-foreground: 229 14% 40%;
+
+    --accent: 228 23% 21%;
+    --accent-foreground: 229 35% 75%;
+
+    --destructive: 0 67% 58%;
+    --destructive-foreground: 234 19% 13%;
+
+    /* UI */
+    --border: 240 11% 7%;
+    --input: 234 17% 15%;
+    --ring: 220 89% 72%;
+
+    --radius: 0.25rem;
+
+    /* Editor + Layout */
+    --editor-bg: 234 19% 13%;
+    --sidebar-background: 240 16% 10%;
+
+    --tab-bar: 240 16% 10%;
+    --tab-active: 234 19% 13%;
+    --tab-inactive: 240 16% 10%;
+
+    --status-bar: 240 16% 10%;
+    --editor-line: 228 23% 21%;
+
+    /* Editor typography — controlled by ThemeCustomization */
+    --editor-font-family: "Cascadia Code", "Cascadia Mono", "Fira Code", Menlo, Monaco, "Courier New", monospace;
+    --editor-font-size: 13px;
+    --editor-line-height: 1.6;
+
+    /* Syntax */
+    --syntax-purple: 261 86% 79%;
+    --syntax-blue: 220 89% 72%;
+    --syntax-green: 89 51% 61%;
+    --syntax-yellow: 35 66% 64%;
+    --syntax-orange: 23 100% 70%;
+    --syntax-cyan: 171 58% 65%;
+    --syntax-red: 351 88% 71%;
+    --syntax-comment: 229 23% 44%;
+
+    /* Selection */
+    --editor-selection-match: 220 89% 72%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body, #root {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    overflow: hidden;
+  }
+}
+
+/* CodeMirror — structural overrides using CSS variables */
+.cm-editor {
+  height: 100%;
+  font-family: var(--editor-font-family) !important;
+  font-size: var(--editor-font-size) !important;
+  background-color: hsl(var(--editor-bg)) !important;
+}
+
+.cm-editor.cm-focused {
+  outline: none !important;
+}
+
+.cm-scroller {
+  font-family: inherit !important;
+  line-height: var(--editor-line-height) !important;
+}
+
+.cm-gutters {
+  background-color: hsl(var(--editor-bg)) !important;
+  border-right: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.cm-activeLineGutter,
+.cm-activeLine {
+  background-color: hsl(var(--editor-line)) !important;
+}
+
+/* Selection */
+.cm-editor .cm-content ::selection {
+  background-color: hsl(var(--primary) / 0.3) !important;
+}
+
+/* Sidebar */
+aside {
+  background-color: hsl(var(--sidebar-background)) !important;
+}
+
+/* Markdown preview */
+.md-preview {
+  @apply text-foreground;
+  line-height: 1.6;
+}
+
+.md-preview h1, .md-preview h2, .md-preview h3, .md-preview h4 {
+  @apply font-semibold mt-4 mb-2 text-foreground;
+}
+
+.md-preview h1 { @apply text-2xl border-b border-border pb-2; }
+.md-preview h2 { @apply text-xl border-b border-border pb-1; }
+.md-preview h3 { @apply text-lg; }
+
+.md-preview p { @apply my-2; }
+
+.md-preview a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+.md-preview code {
+  background: hsl(var(--muted));
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  font-family: var(--editor-font-family);
+  font-size: 0.9em;
+}
+
+.md-preview pre {
+  background: hsl(var(--muted));
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 0.8em 0;
+  white-space: pre;
+}
+
+.md-preview pre code {
+  background: transparent;
+  padding: 0;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.md-preview ul, .md-preview ol {
+  @apply pl-6 my-2;
+}
+
+.md-preview ul { list-style: disc; }
+.md-preview ol { list-style: decimal; }
+
+.md-preview blockquote {
+  border-left: 3px solid hsl(var(--border));
+  padding-left: 1em;
+  color: hsl(var(--muted-foreground));
+  margin: 0.8em 0;
+}
+
+.md-preview table {
+  border-collapse: collapse;
+  margin: 0.8em 0;
+  width: 100%;
+}
+
+.md-preview th, .md-preview td {
+  border: 1px solid hsl(var(--border));
+  padding: 6px 12px;
+}
+
+.md-preview th {
+  background: hsl(var(--muted));
+  font-weight: 600;
+}
+
+/* Blockquotes */
+.md-preview blockquote {
+  border-left: 4px solid hsl(var(--primary));
+  padding: 0.5em 1em;
+  margin: 0.8em 0;
+  background: hsl(var(--muted) / 0.3);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Task lists */
+.md-preview .task-list-item {
+  list-style: none;
+  margin-left: -1.2em;
+}
+
+.md-preview .task-list-item input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: default;
+  accent-color: hsl(var(--primary));
+}
+
+/* Strikethrough */
+.md-preview s, .md-preview del, .md-preview strike {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Horizontal rule */
+.md-preview hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 1.5em 0;
+}
+
+/* Links */
+.md-preview a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+.md-preview a:hover {
+  text-decoration: none;
+}
+
+/* Images */
+.md-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Code blocks */
+.md-preview pre {
+  background: hsl(var(--muted));
+  border-radius: 6px;
+  padding: 1em;
+  overflow-x: auto;
+  margin: 0.8em 0;
+  white-space: pre;
+}
+
+.md-preview pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.9em;
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.md-preview code {
+  background: hsl(var(--muted));
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: 'Fira Code', 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* hljs syntax highlighting — token colors match the CodeMirror editor palette */
+.md-preview .hljs {
+  color: hsl(var(--foreground));
+  background: transparent;
+}
+.md-preview .hljs-keyword,
+.md-preview .hljs-selector-tag,
+.md-preview .hljs-operator,
+.md-preview .hljs-punctuation { color: hsl(var(--syntax-purple)); }
+
+.md-preview .hljs-string,
+.md-preview .hljs-regexp,
+.md-preview .hljs-deletion,
+.md-preview .hljs-attr,
+.md-preview .hljs-attribute { color: hsl(var(--syntax-green)); }
+
+.md-preview .hljs-number,
+.md-preview .hljs-literal,
+.md-preview .hljs-boolean,
+.md-preview .hljs-symbol { color: hsl(var(--syntax-orange)); }
+
+.md-preview .hljs-type,
+.md-preview .hljs-class,
+.md-preview .hljs-name,
+.md-preview .hljs-selector-class,
+.md-preview .hljs-selector-id { color: hsl(var(--syntax-cyan)); }
+
+.md-preview .hljs-property { color: hsl(var(--syntax-yellow)); }
+
+.md-preview .hljs-title,
+.md-preview .hljs-title.function_,
+.md-preview .hljs-built_in { color: hsl(var(--primary)); }
+
+.md-preview .hljs-comment,
+.md-preview .hljs-meta,
+.md-preview .hljs-doctag { color: hsl(var(--muted-foreground)); font-style: italic; }
+
+.md-preview .hljs-tag { color: hsl(var(--destructive)); }
+
+.md-preview .hljs-variable,
+.md-preview .hljs-params { color: hsl(var(--foreground)); }
+
+.md-preview .hljs-link { color: hsl(var(--syntax-cyan)); text-decoration: underline; }
+.md-preview .hljs-emphasis { font-style: italic; }
+.md-preview .hljs-strong { font-weight: bold; }
+
+/* Mermaid diagrams */
+.mermaid-container {
+  position: relative;
+  text-align: center;
+  margin: 16px 0;
+  border-radius: 8px;
+}
+
+.mermaid-container svg {
+  max-width: 100%;
+}
+
+.mermaid-rendered {
+  display: flex;
+  justify-content: center;
+}
+
+/* Mermaid per-diagram toolbar */
+.mermaid-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: hsl(var(--card) / 0.92);
+  border: 1px solid hsl(var(--border));
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+
+.mermaid-container:hover .mermaid-toolbar {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mermaid-toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: transparent;
+  border: none;
+  color: hsl(var(--foreground));
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  transition: background 0.1s;
+  white-space: nowrap;
+}
+
+.mermaid-toolbar-btn:hover {
+  background: hsl(var(--muted));
+}
+
+/* Mermaid parse error */
+.mermaid-parse-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 14px;
+  background: hsl(var(--destructive) / 0.1);
+  border: 1px solid hsl(var(--destructive) / 0.35);
+  border-radius: 6px;
+  color: hsl(var(--destructive));
+  font-size: 12px;
+  font-family: var(--editor-font-family);
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Mermaid zoom modal */
+#mermaid-zoom-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s;
+}
+
+#mermaid-zoom-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mermaid-modal-content {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 92vw;
+  height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.55);
+}
+
+.mermaid-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid hsl(var(--border));
+  font-weight: 600;
+  font-size: 13px;
+  color: hsl(var(--foreground));
+  flex-shrink: 0;
+}
+
+.mermaid-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  background: transparent;
+  border: none;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.mermaid-modal-close:hover {
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+}
+
+.mermaid-modal-diagram {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  min-height: 200px;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+}
+
+.mermaid-modal-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-top: 1px solid hsl(var(--border));
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+/* Code block copy button */
+.md-preview pre {
+  position: relative;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: hsl(var(--card) / 0.9);
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  font-size: 11px;
+  font-family: inherit;
+  line-height: 1.4;
+  opacity: 0;
+  transition: opacity 0.15s, background 0.1s, color 0.1s;
+  backdrop-filter: blur(4px);
+}
+
+.md-preview pre:hover .code-copy-btn {
+  opacity: 1;
+}
+
+.code-copy-btn:hover {
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+}
+
+/* Math */
+.md-preview .math-inline {
+  display: inline;
+}
+
+.md-preview .math-block {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+  overflow-x: auto;
+}
+
+/* Preview selection highlight - synced with editor selection */
+.md-preview [data-source-line].preview-selection-highlight {
+  background-color: hsl(var(--primary) / 0.12);
+  border-radius: 3px;
+  outline: 1px solid hsl(var(--primary) / 0.3);
+  outline-offset: 1px;
+  transition: background-color 0.15s ease, outline-color 0.15s ease;
+}
+
+/* Minimal focus outline on select elements */
+select:focus,
+select:focus-visible {
+  outline: 1px solid hsl(var(--border)) !important;
+  outline-offset: 0px !important;
+  box-shadow: none !important;
+}
+
+/* Scrollbar - segue o padrão do tema */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted)) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted) / 0.6);
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent) / 0.8);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
