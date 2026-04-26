@@ -9,14 +9,16 @@ Editor de código e markdown com preview em tempo real. Roda como aplicativo des
 | Editor de código com syntax highlighting | ✅ | ✅ |
 | Preview de Markdown em tempo real | ✅ | ✅ |
 | Suporte a fórmulas matemáticas (KaTeX) | ✅ | ✅ |
-| Diagramas Mermaid | ✅ | ✅ |
+| Diagramas Mermaid (com zoom e export PNG/SVG) | ✅ | ✅ |
 | Múltiplas abas | ✅ | ✅ |
 | Temas claro e escuro | ✅ | ✅ |
 | Importar arquivo do GitHub | ✅ | ✅ |
-| Salvar arquivos no disco | ❌ | ✅ |
-| Carregar arquivos do disco | ❌ | ✅ |
-| Pasta de backup automático | ❌ | ✅ |
-| Monitorar mudanças na pasta | ❌ | ✅ |
+| Importar arquivo do computador | ✅ | ✅ |
+| Importar pasta inteira | ✅ | ✅ |
+| Exportar arquivo (download) | ✅ | ✅ |
+| Exportar pasta como .zip | ✅ | ✅ |
+| Pasta de backup automático no disco | ❌ | ✅ |
+| Monitorar mudanças na pasta de backup | ❌ | ✅ |
 | Ícone na bandeja do sistema | ❌ | ✅ |
 
 ---
