@@ -2,6 +2,10 @@
 
 Editor de código e markdown com preview em tempo real. Roda como aplicativo desktop no Windows (via Tauri) e pode ser aberto no navegador durante o desenvolvimento.
 
+**Demo ao vivo:** https://notecoder.vercel.app
+
+> A demo mostra a interface completa. Funções que dependem do sistema operacional (salvar arquivos, pasta de backup) só funcionam na versão desktop instalada.
+
 ---
 
 ## Estrutura do Projeto
