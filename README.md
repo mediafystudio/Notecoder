@@ -1,4 +1,4 @@
-# Notecoder
+<h1><img src="src-tauri/icons/icone-notecoder.svg" width="40" align="center" /> Notecoder</h1>
 
 Editor de código e markdown com preview em tempo real. Roda como aplicativo desktop no Windows (via Tauri) e pode ser aberto no navegador durante o desenvolvimento.
 
